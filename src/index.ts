@@ -19,7 +19,7 @@ app.use('/api/movies', moviesRouter);
 // Root endpoint
 app.get('/', (_req, res) => {
     res.json({
-        name: 'Movie Mood API',
+        name: 'Filmcáchai API',
         version: '1.0.0',
         endpoints: {
             health: 'GET /api/movies/health',
@@ -30,5 +30,5 @@ app.get('/', (_req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`🎬 Movie Mood API running on http://localhost:${PORT}`);
+    console.log(`🎬 Filmcáchai API running on http://localhost:${PORT}`);
 });
