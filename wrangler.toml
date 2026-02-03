@@ -1,0 +1,20 @@
+name = "filmcachai-backend"
+
+compatibility_date = "2025-09-15"
+compatibility_flags = ["nodejs_compat"]
+
+main = "src/index.ts"
+
+[placement]
+mode = "smart"
+
+[observability]
+enabled = true
+
+# Variables de entorno para desarrollo local (opcional)
+# [vars]
+# ENVIRONMENT = "development"
+
+# Para producción, usa: npx wrangler secret put GEMINI_API_KEY
+# Para producción, usa: npx wrangler secret put TMDB_API_KEY
+# Para producción, usa: npx wrangler secret put TMDB_ACCESS_TOKEN

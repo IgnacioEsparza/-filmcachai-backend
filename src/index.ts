@@ -1,24 +1,18 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import moviesRouter from './routes/movies';
+import { Hono } from 'hono';
+import { cors } from 'hono/cors';
+import { logger } from 'hono/logger';
+import { Env } from './types/env';
+import movies from './routes/movies.route';
 
-// Cargar variables de entorno
-dotenv.config();
+const app = new Hono<{ Bindings: Env }>();
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+app.use('*', logger());
+app.use('*', cors());
 
-// Middlewares
-app.use(cors());
-app.use(express.json());
+app.route('/api/movies', movies);
 
-// Routes
-app.use('/api/movies', moviesRouter);
-
-// Root endpoint
-app.get('/', (_req, res) => {
-    res.json({
+app.get('/', (c) => {
+    return c.json({
         name: 'Filmcáchai API',
         version: '1.0.0',
         endpoints: {
@@ -28,7 +22,4 @@ app.get('/', (_req, res) => {
     });
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`🎬 Filmcáchai API running on http://localhost:${PORT}`);
-});
+export default app;

@@ -1,25 +1,22 @@
 {
-  "name": "movie-mood-backend",
+  "name": "filmcachai-backend",
   "version": "1.0.0",
   "description": "Backend API for Filmcáchai recommendation app",
-  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run --outdir=dist",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
-    "axios": "^1.7.7",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1"
+    "hono": "^4.4.0"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
+    "@cloudflare/workers-types": "^4.20240620.0",
     "@types/node": "^22.9.0",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "wrangler": "^3.60.0"
   }
 }
